@@ -1,0 +1,33 @@
+Package: IsoCorrectoR
+Title: A Correction Algorithm For Natural Isotope Abundance Contributions
+Version: 0.0.0.9000
+Authors@R: c(person("Christian","Kohler",email="christian.kohler@ur.de",role=c("cre","aut")),
+  person("Paul","Heinrich",email="paul.heinrich@ur.de",role=c("aut")))
+Imports:
+    dplyr,
+    magrittr,
+    quadprog,
+    readr,
+    readxl,
+    stringr,
+    tcltk,
+    tibble,
+    tcltk2,
+    tools,
+    utils,
+    pracma,
+    WriteXLS
+Description: IsoCorrectoR is a tool for correcting 
+  natural isotope abundance contributions in tracing experiments.
+Author: Christian Kohler, Paul Heinrich
+Maintainer: Christian Kohler <christian.kohler@ur.de>
+Depends: R (>= 3.5)
+URL: https://genomics.ur.de/software/IsoCorrectoR
+License: GPL-3
+LazyData: TRUE
+NeedsCompilation: no
+biocViews: Software, FunctionalGenomics, MassSpectrometry
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

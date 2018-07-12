@@ -1,0 +1,21 @@
+citHeader("To cite IsoCorrectoR in publication use:")
+
+citEntry(entry = "Article",
+  title        = "{IsoCorrectoR} A Correction Algorithm For Natural Isotope Abundance Correction",
+  author       = personList(as.person("Paul Heinrich"),
+                   as.person("Christian Kohler")),
+  journal      = "journal",
+  year         = "year",
+  volume       = "volume",
+  number       = "number",
+  pages        = "1--25",
+  url          = "https://genomics.ur.de/software/IsoCorrectoR",
+
+  textVersion  =
+  paste("Paul Heinrich (2018).",
+        "IsoCorrectoR: A Correction ALgorithm for Natural Isotope Abundance Correction",
+        "some Journal, some vlume, some pages",
+        "URL https://genomics.ur.de/software/IsoCorrectoR")
+)
+
+citFooter("Thanks for using IsoCorrectoR. Have a nice day !")
