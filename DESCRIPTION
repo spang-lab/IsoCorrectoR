@@ -1,11 +1,12 @@
 Package: IsoCorrectoR
 Title: A Correction Algorithm For Natural Isotope Abundance Contributions
-Version: 0.0.0.9000
+Version: 0.99.0
 Authors@R: c(person("Christian","Kohler",email="christian.kohler@ur.de",role=c("cre","aut")),
   person("Paul","Heinrich",email="paul.heinrich@ur.de",role=c("aut")))
 Imports:
     dplyr,
     magrittr,
+    methods,
     quadprog,
     readr,
     readxl,
@@ -26,7 +27,7 @@ URL: https://genomics.ur.de/software/IsoCorrectoR
 License: GPL-3
 LazyData: TRUE
 NeedsCompilation: no
-biocViews: Software, FunctionalGenomics, MassSpectrometry
+biocViews: Software, FunctionalGenomics, MassSpectrometry, GUI
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown

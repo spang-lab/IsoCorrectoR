@@ -1,10 +1,12 @@
 # Supporting functions
 
+#' @importFrom methods is
 #' @importFrom stringr str_c
 #' @importFrom stringr str_detect
 #' @importFrom readxl read_excel
 #' @importFrom readr read_csv
 #' @importFrom tools file_ext
+
 #' 
 # Function to check parameters of IsoCorrection() function call
 
@@ -57,7 +59,7 @@ checkIsoCorrectionParameters <- function(MeasurementFile, ElementFile, MoleculeF
   # Check format of output file
   
   status <- try(match.arg(FileOutFormat, c("xls", "csv")), silent = TRUE)
-  if (class(status) == "try-error") {
+  if (is(status,"try-error")) {
     notification <- paste0("The output format for the result file should be either \"xls\" or \"csv\". Yours was \"", FileOutFormat, "\".")
     errorHandler(notification, logEnvironment, "error")
   }
