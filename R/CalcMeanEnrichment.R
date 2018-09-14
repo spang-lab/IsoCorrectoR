@@ -1,11 +1,11 @@
 # Calculates the mean isotopic enrichment for the corrected values.
 
 
-CalcMeanEnrichment <- function(MoleculeInfo, MoleculesTotal, SamplesTotal, roundDigits, correctionResultList, UltraHighRes) {
+CalcMeanEnrichment <- function(MoleculeInfo, MoleculesTotal, SamplesTotal, roundDigits, CorrectionResultList, UltraHighRes, verbose) {
     
-    message("\n", date(), " :: Calculating <Mean Enrichment> ")
+    if(verbose){message("\n", date(), " :: calculating mean enrichment ...")}
     
-    meanEnrichmentResultList <- list()
+    MeanEnrichmentResultList <- list()
     
     for (SampleNo in seq_len(SamplesTotal)) {
         
@@ -15,7 +15,7 @@ CalcMeanEnrichment <- function(MoleculeInfo, MoleculesTotal, SamplesTotal, round
             
             MoleculeData <- MoleculeInfo[[MoleculeNo]]
             MoleculeName <- names(MoleculeInfo[MoleculeNo])
-            CorrectionData <- correctionResultList[[SampleNo]][[MoleculeNo]]
+            CorrectionData <- CorrectionResultList[[SampleNo]][[MoleculeNo]]
             Transitions <- MoleculeData[["Transitions"]]
             NumberTransitions <- nrow(Transitions)
             
@@ -70,11 +70,16 @@ CalcMeanEnrichment <- function(MoleculeInfo, MoleculesTotal, SamplesTotal, round
             
         }
         
-        meanEnrichmentResultList[[SampleNo]] <- MeanEnrichmentSample
+        MeanEnrichmentResultList[[SampleNo]] <- MeanEnrichmentSample
         
     }
     
-    message(date(), " :: Calculating <Mean Enrichment> [OK]")
-    return(meanEnrichmentResultList)
+    names(MeanEnrichmentResultList) <- names(CorrectionResultList)
+    
+    MeanEnrichmentDataOutput <-
+      as.data.frame(convertEnrichmentList2matrix(input = MeanEnrichmentResultList, verbose=verbose))
+    
+    if(verbose){message(date(), " :: calculating mean enrichment [OK]\n")}
+    return(MeanEnrichmentDataOutput)
     
 }  #MeanEnrichment

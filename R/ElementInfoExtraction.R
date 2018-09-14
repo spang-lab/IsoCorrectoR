@@ -4,8 +4,8 @@
 #' @importFrom tibble as_tibble
 #' @importFrom magrittr '%>%'
 #' 
-ElementInfoExtraction <- function(ElementData, UltraHighRes, logEnvironment) {
-  message(date(), " :: reading ElementFile")
+ElementInfoExtraction <- function(ElementData, UltraHighRes, logEnvironment, verbose) {
+  if(verbose){message(date(), " :: processing element file ...")}
   
   # Using two nested loops, the isotope information of each element in column 2 is extracted by splitting it using the delimiters '/'
   # (isotopes1/isotope2...) and '_' (abundance-mass shift of given isotope).
@@ -65,8 +65,8 @@ ElementInfoExtraction <- function(ElementData, UltraHighRes, logEnvironment) {
   
   names(ElementList) <- ElementData[[1]]
   
-  checkElementDataLogic(ElementList, UltraHighRes, logEnvironment)
+  checkElementDataLogic(ElementList, UltraHighRes, logEnvironment, verbose=verbose)
   
-  message(date(), " :: Leaving ElementInfoExtraction()")
+  if(verbose){message(date(), " :: processing element file [OK]\n")}
   return(ElementList)
 }  # end of function

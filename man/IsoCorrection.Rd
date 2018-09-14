@@ -9,7 +9,7 @@ IsoCorrection(MeasurementFile = NA, ElementFile = NA, MoleculeFile = NA,
   CalculateMeanEnrichment = TRUE, UltraHighRes = FALSE, DirOut = ".",
   FileOut = "result", FileOutFormat = "csv", ReturnResultsObject = TRUE,
   CorrectAlsoMonoisotopic = FALSE, CalculationThreshold = 10^-8,
-  CalculationThreshold_UHR = 8, Testmode = FALSE)
+  CalculationThreshold_UHR = 8, verbose = FALSE, Testmode = FALSE)
 }
 \arguments{
 \item{MeasurementFile}{Required. The file that contains the measured data to
@@ -69,6 +69,8 @@ resolution mode). Should be left at the default value.}
 threshold to stop probability calculations at for making correction faster
 (high resolution mode). Should be left at the default value.}
 
+\item{verbose}{Logical. If TRUE, status messages are sent to standard output.}
+
 \item{Testmode}{Logical. If TRUE, starts a testmode for development purposes.
 Not required for users of IsoCorrectoR.}
 }
@@ -76,7 +78,8 @@ Not required for users of IsoCorrectoR.}
 The function returns a list with 4 elements
 
 \describe{
- \item{success: }{logical that is TRUE if the correction was successful, FALSE otherwise}
+ \item{success: }{string that is "TRUE" if the correction was successful, "FALSE" if an error occured and "WARNINGS"
+ if warnings occured}
  \item{results: }{a list containing a dataframe for each type of corrected data (normal, fractions, mean enrichment ...).
  Will be NA if ReturnResultsObject is set to FALSE}
  \item{log: }{list containing log information on the correction run (parameters, file names and paths, warnings and errors)}
@@ -84,11 +87,11 @@ The function returns a list with 4 elements
 }
 }
 \description{
-\code{IsoCorrection} is the main function of the IsoCorrectoR package. 
-It performs the correction of mass spectrometry data from stable isotope 
-labeling experiments with regard to natural abundance and tracer purity. 
-Data from both MS and MS/MS experiments can be corrected 
-(with any tracer isotope: 13C, 15N, 18O...), as well as high resolution data 
+\code{IsoCorrection} is the main function of the IsoCorrectoR package.
+It performs the correction of mass spectrometry data from stable isotope
+labeling experiments with regard to natural abundance and tracer purity.
+Data from both MS and MS/MS experiments can be corrected
+(with any tracer isotope: 13C, 15N, 18O...), as well as high resolution data
 from multiple tracer experiments (e.g. 13C and 15N used simultaneously).
 }
 \examples{

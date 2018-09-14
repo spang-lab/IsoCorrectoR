@@ -1,6 +1,6 @@
 Package: IsoCorrectoR
 Title: A Correction Algorithm For Natural Isotope Abundance Contributions
-Version: 0.99.2
+Version: 0.99.3
 Authors@R: c(person("Christian","Kohler",email="christian.kohler@ur.de",role=c("cre","aut")),
   person("Paul","Heinrich",email="paul.heinrich@ur.de",role=c("aut")))
 Imports:
@@ -11,9 +11,7 @@ Imports:
     readr,
     readxl,
     stringr,
-    tcltk,
     tibble,
-    tcltk2,
     tools,
     utils,
     pracma,

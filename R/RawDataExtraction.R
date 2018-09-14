@@ -1,9 +1,9 @@
 
 #' @importFrom magrittr '%>%'
 
-RawDataExtraction <- function(data, MoleculeArray, logEnvironment) {
+RawDataExtraction <- function(data, MoleculeArray, logEnvironment, verbose) {
     
-    message(date(), " :: RawDataExtraction() ")
+    if(verbose){message(date(), " :: processing raw data ...")}
     
     for (i in 2:ncol(data)) {
         data[, i] <- as.numeric(data[, i])
@@ -54,7 +54,7 @@ RawDataExtraction <- function(data, MoleculeArray, logEnvironment) {
                 
                 notification <- stringr::str_c("In measurement data file: The expected measurement ID '", rownames(TransitionsExpected)[TransitionNo], "' could not be found in the measurement data file.\nCorrection will be performed, however the results may be less accurate. Please check your input file for typos.", 
                   "\nBe especially careful when considering fraction and mean enrichment values from molecules with missing measurements.")
-                errorHandler(notification, logEnvironment, "warning")
+                errorHandler(notification, logEnvironment, "warning", verbose=verbose)
                 
             } else {
                 
@@ -68,7 +68,7 @@ RawDataExtraction <- function(data, MoleculeArray, logEnvironment) {
             
             notification <- stringr::str_c("In measurement data file: None of the expected measurement IDs found for molecule '", names(MoleculeArray[MoleculeNo]), 
                 "'.")
-            errorHandler(notification, logEnvironment, "error")
+            errorHandler(notification, logEnvironment, "error", verbose=verbose)
             
         }
         
@@ -91,7 +91,7 @@ RawDataExtraction <- function(data, MoleculeArray, logEnvironment) {
         
     }  #MoleculeNo
     
-    message(date(), " :: RawDataExtraction() [OK]")
+    if(verbose){message(date(), " :: processing raw data [OK]\n")}
     return(list(MoleculeInfo = MoleculeArray, dataRaw = data))
     
 }  #RawDataExtraction

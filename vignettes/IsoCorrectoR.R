@@ -23,7 +23,7 @@ knitr::kable(
 #                DirOut='.', FileOut='result', FileOutFormat='csv',
 #                ReturnResultsObject=FALSE, CorrectAlsoMonoisotopic=FALSE,
 #                CalculationThreshold=10^-8, CalculationThreshold_UHR=8,
-#                Testmode=FALSE)
+#                verbose=FALSE, Testmode=FALSE)
 
 ## ----moleculeFileExampleNormalRes, echo=FALSE, eval=TRUE-------------------
 
@@ -86,6 +86,6 @@ knitr::kable(
   fileExample, align = "l", caption="Element information (resolution independent)"
 )
 
-## ----sessionInfo, echo=FALSE, eval=TRUE, messages=FALSE--------------------
+## ----sessionInfo-----------------------------------------------------------
 sessionInfo()
 
