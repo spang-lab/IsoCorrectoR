@@ -1,6 +1,6 @@
 Package: IsoCorrectoR
-Title: A Correction Algorithm For Natural Isotope Abundance Contributions
-Version: 0.99.3
+Title: Correction for natural isotope abundance and tracer impurity in MS and MS/MS data from stable isotope labeling experiments
+Version: 0.99.4
 Authors@R: c(person("Christian","Kohler",email="christian.kohler@ur.de",role=c("cre","aut")),
   person("Paul","Heinrich",email="paul.heinrich@ur.de",role=c("aut")))
 Imports:
@@ -16,8 +16,7 @@ Imports:
     utils,
     pracma,
     WriteXLS
-Description: IsoCorrectoR is a tool for correcting 
-  natural isotope abundance contributions in tracing experiments.
+Description: IsoCorrectoR performs the correction of mass spectrometry data from stable isotope labeling/tracing metabolomics experiments with regard to natural isotope abundance and tracer impurity. Data from both MS and MS/MS measurements can be corrected (with any tracer isotope: 13C, 15N, 18O...), as well as high resolution MS data from multiple tracer experiments (e.g. 13C and 15N used simultaneously).
 Author: Christian Kohler, Paul Heinrich
 Maintainer: Christian Kohler <christian.kohler@ur.de>
 Depends: R (>= 3.5)
@@ -25,7 +24,7 @@ URL: https://genomics.ur.de/software/IsoCorrectoR
 License: GPL-3
 LazyData: TRUE
 NeedsCompilation: no
-biocViews: Software, FunctionalGenomics, MassSpectrometry, GUI
+biocViews: Software, Metabolomics, MassSpectrometry, Preprocessing
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown
