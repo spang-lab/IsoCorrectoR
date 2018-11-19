@@ -44,7 +44,7 @@ RawDataExtraction <- function(data, MoleculeArray, logEnvironment, verbose) {
         
         for (TransitionNo in seq_len(NumberTransitions)) {
             
-            tmpIdx <- stringr::str_detect(txt_extracted, rownames(TransitionsExpected)[TransitionNo]) %>% which
+            tmpIdx <- stringr::str_detect(txt_extracted, paste0("^", rownames(TransitionsExpected)[TransitionNo], "$")) %>% which
             
             MissingTransitions.vec[TransitionNo] <- 0
             

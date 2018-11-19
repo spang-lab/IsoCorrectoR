@@ -5,7 +5,7 @@
 #' labeling experiments with regard to natural abundance and tracer purity.
 #' Data from both MS and MS/MS experiments can be corrected
 #' (with any tracer isotope: 13C, 15N, 18O...), as well as high resolution data
-#' from multiple tracer experiments (e.g. 13C and 15N used simultaneously).
+#' from multiple-tracer experiments (e.g. 13C and 15N used simultaneously).
 #'
 #' @param MeasurementFile Required. The file that contains the measured data to
 #'   be corrected. Only ".xls",".xlsx" and ".csv" file formats are supported.
@@ -388,10 +388,11 @@ IsoCorrection <-
       PLEASE CHECK YOUR LOG-FILE.\n\n"
 
       log.env$error <- c(log.env$error, e)
-
-      if (verbose) {
-        message(paste0(commonErrorString, e))
-      }
+      
+      # verbose independent message
+      
+      message(paste0(commonErrorString, e))
+        
     }
     )
 
@@ -400,9 +401,11 @@ IsoCorrection <-
     },
     error = function(e) {
       log.env$error <- c(log.env$error, e)
-      if (verbose) {
-        message(paste0("THE LOG-FILE COULD NOT BE WRITTEN. ERROR: ", e[[1]]))
-      }
+      
+      # verbose independent message
+      
+      message(paste0("THE LOG-FILE COULD NOT BE WRITTEN. ERROR: ", e[[1]]))
+      
     }
     )
 

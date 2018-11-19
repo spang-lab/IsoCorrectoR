@@ -31,13 +31,11 @@ ElementInfoExtraction <- function(ElementData, UltraHighRes, logEnvironment, ver
     # Sort Isotopes of each element in ElementArray ascending by probability. This is required to be able to later calculate probabilities in descending
     # order, making it possible to stop the calculation at a defined threshold without losing higher probability values.
     
-    ElementArray_tbl <- tibble::as_tibble(ElementArray)
+    ElementArray_df <- as.data.frame(ElementArray)
     
-    # make R CMD check happy
-    ElementArray_tbl <- tibble::as_tibble(ElementArray[order(ElementArray[, "IsotopeAbundance"], decreasing = TRUE), ])
+    ElementArray_df <- ElementArray_df[order(ElementArray_df["IsotopeAbundance"], decreasing = TRUE),] 
     
-    # makes R CMD check unhappy ElementArray_tbl<-ElementArray_tbl %>% arrange(desc(IsotopeAbundance))
-    
+    ElementArray_tbl <- tibble::as_tibble(ElementArray_df)
     
     tmp.list <- list()
     tmp2.list <- list()
