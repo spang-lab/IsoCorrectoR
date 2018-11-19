@@ -1,5 +1,5 @@
 Package: IsoCorrectoR
-Title: Correction for natural isotope abundance and tracer impurity in MS and MS/MS data from stable isotope labeling experiments
+Title: Correction for natural isotope abundance and tracer purity in MS and MS/MS data from stable isotope labeling experiments
 Version: 0.99.4
 Authors@R: c(person("Christian","Kohler",email="christian.kohler@ur.de",role=c("cre","aut")),
   person("Paul","Heinrich",email="paul.heinrich@ur.de",role=c("aut")))
@@ -16,16 +16,14 @@ Imports:
     utils,
     pracma,
     WriteXLS
-Description: IsoCorrectoR performs the correction of mass spectrometry data from stable isotope labeling/tracing metabolomics experiments with regard to natural isotope abundance and tracer impurity. Data from both MS and MS/MS measurements can be corrected (with any tracer isotope: 13C, 15N, 18O...), as well as high resolution MS data from multiple tracer experiments (e.g. 13C and 15N used simultaneously).
-Author: Christian Kohler, Paul Heinrich
-Maintainer: Christian Kohler <christian.kohler@ur.de>
+Description: IsoCorrectoR performs the correction of mass spectrometry data from stable isotope labeling/tracing metabolomics experiments with regard to natural isotope abundance and tracer impurity. Data from both MS and MS/MS measurements can be corrected (with any tracer isotope: 13C, 15N, 18O...), as well as high resolution MS data from multiple-tracer experiments (e.g. 13C and 15N used simultaneously). See the Bioconductor package IsoCorrectoRGUI for a graphical user interface to IsoCorrectoR.
 Depends: R (>= 3.5)
-URL: https://genomics.ur.de/software/IsoCorrectoR
+URL: https://genomics.ur.de/files/IsoCorrectoR/
 License: GPL-3
 LazyData: TRUE
 NeedsCompilation: no
 biocViews: Software, Metabolomics, MassSpectrometry, Preprocessing
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
