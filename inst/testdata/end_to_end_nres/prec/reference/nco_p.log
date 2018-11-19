@@ -1,0 +1,25 @@
+ISOCORRECTOR LOG-FILE - 2018-11-20 13:28:10
+IsoCorrectoR-version: 1.1.2
+
+IsoCorrectoR is free software and comes without any warranty.
+
+FILES AND DIRECTORIES
+
+Measurement File: inst/testdata/normal_resolution/prec/MeasurementFile.csv
+Molecule File: inst/testdata/normal_resolution/prec/MoleculeFile.csv
+Element File: inst/testdata/ElementFile.csv
+Working Directory: C:/IsoCorrectoR/Development/IsoCorrectoR_R_dev_heinrich/IsoCorrectoR
+Output Directory: inst/testdata/normal_resolution/prec/reference
+Result File(s): IsoCorrectoR_nco_p_Corrected.csv, IsoCorrectoR_nco_p_CorrectedFractions.csv, IsoCorrectoR_nco_p_Residuals.csv, IsoCorrectoR_nco_p_RelativeResiduals.csv, IsoCorrectoR_nco_p_CorrectedMonoisotopic.csv, IsoCorrectoR_nco_p_CorrectedMonoisotopicFractions.csv, IsoCorrectoR_nco_p_MeanEnrichment.csv, IsoCorrectoR_nco_p_RawData.csv
+
+PARAMETERS
+
+Correction for tracer impurity: TRUE
+Correction of tracer element in core molecule: FALSE
+Ultra-High-Resolution correction mode: FALSE
+Calculation of mean enrichment: TRUE
+Molecules in the correction process: NL-C2-LabC2, NL-C4-LabC2, NL-C6-LabC2, NL-C8-LabC2, NL-C10-LabC2
+Tracer(s): C
+Tracer purity: 0.99
+Limit value for calculation: 1e-08
+

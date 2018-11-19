@@ -4,10 +4,11 @@
 \alias{IsoCorrection}
 \title{Algorithm For Natural Isotope Abundance And Tracer Purity Correction Of Data From Stable Isotope Labeling Experiments}
 \usage{
-IsoCorrection(MeasurementFile = NA, ElementFile = NA, MoleculeFile = NA,
-  CorrectTracerImpurity = FALSE, CorrectTracerElementCore = TRUE,
-  CalculateMeanEnrichment = TRUE, UltraHighRes = FALSE, DirOut = ".",
-  FileOut = "result", FileOutFormat = "csv", ReturnResultsObject = TRUE,
+IsoCorrection(MeasurementFile = NA, ElementFile = NA,
+  MoleculeFile = NA, CorrectTracerImpurity = FALSE,
+  CorrectTracerElementCore = TRUE, CalculateMeanEnrichment = TRUE,
+  UltraHighRes = FALSE, DirOut = ".", FileOut = "result",
+  FileOutFormat = "csv", ReturnResultsObject = TRUE,
   CorrectAlsoMonoisotopic = FALSE, CalculationThreshold = 10^-8,
   CalculationThreshold_UHR = 8, verbose = FALSE, Testmode = FALSE)
 }

@@ -1,0 +1,5 @@
+"Molecule","MS ion or MS/MS product ion","MS/MS neutral loss"
+"TracerOnly","C10LabC6",""
+"TracerPlus1","C10LabC6H18",""
+"TracerPlus2","C10LabC6H18O4",""
+"TracerOnlyNoDeriv","C6LabC6",""
