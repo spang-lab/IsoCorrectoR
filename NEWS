@@ -1,4 +1,13 @@
-CHANGES IN VERSION 0.1.27
--------------------------
+CHANGES IN VERSION 1.0.1 (release 3.8) / 1.1.1 (devel)
+======================================================
 
-  o prepare for Biocoductor submission
+  o Fixed an issue where correction would abort with an error message if chemical formulas in the molecule file contain Phosphorus (thanks to Mathieu Bousquet for reporting this)  
+  o Fixed an issue that could lead to an error if measurement IDs in the measurement file are a suffix of other measurement IDs (e.g., cysteine_1 and homocysteine_1)  
+  o The display of error messages in the R console (they always appear in the log file) is now no longer suppressed if verbose is set to FALSE in the IsoCorrection() function call  
+  
+  
+  
+CHANGES IN VERSION 1.0.0
+=========================
+
+  o initial commit to Bioconductor
