@@ -1,10 +1,6 @@
 Package: IsoCorrectoR
 Title: Correction for natural isotope abundance and tracer purity in MS and MS/MS data from stable isotope labeling experiments
-<<<<<<< HEAD
 Version: 1.0.3
-=======
-Version: 1.1.2
->>>>>>> d52ec62... update NEWS
 Authors@R: c(person("Christian","Kohler",email="christian.kohler@ur.de",role=c("cre","aut")),
   person("Paul","Heinrich",email="paul.heinrich@ur.de",role=c("aut")))
 Imports:
