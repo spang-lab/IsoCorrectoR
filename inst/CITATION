@@ -1,21 +1,26 @@
-citHeader("To cite IsoCorrectoR in publication use:")
+citHeader("When using IsoCorrectoR in published research, please cite:")
 
 citEntry(entry = "Article",
-  title        = "{IsoCorrectoR} A Correction Algorithm For Natural Isotope Abundance Correction",
+  title        = "Correcting for natural isotope abundance and tracer impurity in MS-, MS/MS- and high-resolution-multiple-tracer-data from stable isotope labeling experiments with IsoCorrectoR",
   author       = personList(as.person("Paul Heinrich"),
-                   as.person("Christian Kohler")),
-  journal      = "journal",
-  year         = "year",
-  volume       = "volume",
-  number       = "number",
-  pages        = "1--25",
-  url          = "https://genomics.ur.de/software/IsoCorrectoR",
+                   as.person("Christian Kohler"),
+                   as.person("Lisa Ellmann"),
+                   as.person("Paul Kuerner"),
+                   as.person("Rainer Spang"),
+                   as.person("Peter J. Oefner"),
+                   as.person("Katja Dettmer")),
+  journal      = "XX",
+  year         = "XXXX",
+  volume       = "XX",
+  number       = "XX",
+  pages        = "X--XX",
+  url          = "https://genomics.ur.de/files/IsoCorrectoR/",
 
   textVersion  =
-  paste("Paul Heinrich (2018).",
-        "IsoCorrectoR: A Correction ALgorithm for Natural Isotope Abundance Correction",
-        "some Journal, some vlume, some pages",
-        "URL https://genomics.ur.de/software/IsoCorrectoR")
+  paste("Paul Heinrich et al. (2018).",
+        "Correcting for natural isotope abundance and tracer impurity in MS-, MS/MS- and high-resolution-multiple-tracer-data from stable isotope labeling experiments with IsoCorrectoR",
+        "(Manuscript accepted)",
+        "URL https://genomics.ur.de/files/IsoCorrectoR/")
 )
 
 citFooter("Thanks for using IsoCorrectoR. Have a nice day !")

@@ -21,18 +21,18 @@ knitr::opts_chunk$set(echo = TRUE)
 library(readxl)
 ```
 
-#Why perform correction for natural stable isotope abundance and tracer purity?
+# Why perform correction for natural stable isotope abundance and tracer purity?
 
-In metabolomics, stable isotope tracer experiments can provide a wealth of information. The data obtained should however not be interpreted without a preceding data correction procedure: The incorporation of the tracer isotope into metabolites provides a mass shift with respect to the unlabeled species. However, isotopes of higher mass also occur naturally, the quantity defined by their natural abundance. This leads to convoluted signals in mass spectrometry that contain contributions from both populations. 
+In metabolomics, stable isotope tracer experiments can provide a wealth of information. The data obtained should however not be interpreted without a preceding data correction procedure: The incorporation of the tracer isotope into metabolites provides a mass shift with respect to the unlabeled species. But isotopes of higher mass also occur naturally, the quantity defined by their natural abundance. This leads to convoluted signals in mass spectrometry that contain contributions from both populations. 
 
-In qualitative tracing experiments, this results in a high risk of assuming (pathway) contributions of the tracer substrate when there are none. And in more quantitative tracing approaches, the ratios of a metabolites different isotopologues/isotopomers will be distorted, as will be the fluxes in metabolic flux analysis. A similar effect is observed due to the impurity of the tracer substrate. Therefore, a correction for natural stable isotope abundance and possibly tracer purity should be made prior to data interpretation/modeling (@Buescher2015). See our publication on IsoCorrectoR for more information on the theory of correction or the impact that correction has on data interpetation (xxx).
+In qualitative tracing experiments, this results in a high risk of assuming (pathway) contributions of the tracer substrate when there are none. And in more quantitative tracing approaches, the ratios of a metabolites different isotopologues/isotopomers will be distorted, as will be the fluxes in metabolic flux analysis. A similar effect is observed due to the impurity of the tracer substrate. Therefore, a correction for natural stable isotope abundance and possibly tracer purity should be made prior to data interpretation/modeling (@Buescher2015). See our publication on IsoCorrectoR (@Heinrich2018) for more information on the theory of correction or the impact that correction has on data interpetation.
 
-#What is IsoCorrectoR?
+# What is IsoCorrectoR?
 
-IsoCorrectoR is an R-based tool for the correction of mass spectrometry data from stable isotope labeling experiments with regard to natural abundance and tracer purity. IsoCorrectoR can correct data from both MS and MS/MS experiments with any tracer isotope (^13^C, ^15^N, ^18^O...). Additionally, it is able to correct high resolution data from multiple tracer experiments (e.g. ^13^C and ^15^N used simultaneously). 
+IsoCorrectoR is an R-based tool for the correction of mass spectrometry data from stable isotope labeling experiments with regard to natural abundance and tracer purity. IsoCorrectoR can correct data from both MS and MS/MS experiments with any tracer isotope (^13^C, ^15^N, ^18^O...). Additionally, it is able to correct high resolution data from multiple-tracer experiments (e.g. ^13^C and ^15^N used simultaneously). 
 The tool was designed for a high degree of usability. It takes intuitively structured input files that are easy to build both in csv- and Microsoft Excel-format. The output can also be generated in either of those file formats. An optional graphical user interface makes the handling very simple, even for researchers that have little or no experience with R. Batch-processing is very convenient for anyone with a basic understanding of the R language and usually also very quick, as correction performs fast even on desktop systems. Furthermore, IsoCorrectoR is capable of handling data with missing values while providing useful warnings and error messages to the user regarding inappropriate input or data quality. All relevant information on a correction run, including warnings and errors that may have occured, is stored in a clearly structured logfile. 
 
-While many of IsoCorrectoRs correction features can also be found in other programs like IsoCor (Python, MS1-data natural abundance and tracer purity correction), ICT (Perl, features of IsoCor and additional MS/MS-data correction) or PyNAC (Python, natural abundance correction of ultra-high-resolution data from multiple tracer experiments, but no tracer purity correction), IsoCorrectoR is the only tool that comprises all the features in a single implementation (@Buescher2015; @Millard2012; @Jungreuthmayer2016; @Carreer2013).
+While many of IsoCorrectoRs correction features can also be found in other programs like IsoCor (Python, MS1-data natural abundance and tracer purity correction), ICT (Perl, features of IsoCor and additional MS/MS-data correction) or PyNAC (Python, natural abundance correction of high resolution data from multiple-tracer experiments, but no tracer purity correction), IsoCorrectoR is the only tool that comprises all the features in a single implementation. Further, to date, no other tool can correct for tracer purity in high resolution data (@Buescher2015; @Millard2012; @Jungreuthmayer2016; @Carreer2013).
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE}
 # not nice, but we need the IsoCorrectoR data to generate to tool_features table !
@@ -51,43 +51,35 @@ knitr::kable(
 )
 ```
 
-#IsoCorrectoR packages: IsoCorrectoR and IsoCorrectoRGUI
+# IsoCorrectoR packages: IsoCorrectoR and IsoCorrectoRGUI
 
 IsoCorrectoR consists of two R packages: __IsoCorrectoR__ is the base package that provides a console interface to the correction algorithm. The package __IsoCorrectoRGUI__ additionally provides a graphical user interface for using IsoCorrectoR. If you want to use IsoCorrectoR with the graphical user interface (GUI), it is sufficient to install the package IsoCorrectoRGUI. If you do not need a GUI, you can just install the package IsoCorrectoR.
 
-#Installing IsoCorrectoR
+# Installing IsoCorrectoR
 
-##Requirements 
+## Requirements 
 
-###General (IsoCorrectoR and IsoCorrectoRGUI)
+### General (IsoCorrectoR and IsoCorrectoRGUI)
 
 If you want IsoCorrectoR to __write correction results as xls files, a Perl installation is required__. If you want your __results written as csv files, a Perl installation is not needed__. To check if Perl is installed on your machine, type __which perl__ in the command line of Linux and Mac OS machines or __where perl__ in the command line of Windows machines. On Linux distributions, Perl should usually be installed by default. On Windows, the Perl distribution Strawberry Perl (http://strawberryperl.com/) can be used.
 
-###Graphical user interface version only (IsoCorrectoRGUI)
+### Graphical user interface version only (IsoCorrectoRGUI)
 
 The __graphical user interface (GUI) package of IsoCorrectoR, IsoCorrectoRGUI, additionally requires the R package 'tcltk'. This package is installed with all standard installations of R__. On __Linux and Mac OS systems (but not on Windows), the X11 window manager is additionally required for running the GUI__. To check if tcltk and (in the case of Linux and Mac OS systems) X11 is available on your system, start an R session and type __capabilities()__ in your R console. If the value below tcltk and X11 in the output is TRUE, they are available to your R installation. Otherwise, please refer to the distributors of Tcl/tk and/or X11 for installing the software on your operating system if you wish to use the GUI.
 
-##Installation
+## Installation
 
-__THIS TEXT HAS TO BE UPDATED__
+See http://bioconductor.org/packages/release/bioc/html/IsoCorrectoR.html for the base package or http://bioconductor.org/packages/release/bioc/html/IsoCorrectoRGUI.html for the GUI package.
 
-###IsoCorrectoR version with graphical user interface (IsoCorrectoRGUI)
+# How to use IsoCorrectoR
 
-Start an R session, e.g. by starting RStudio. If you want to __use IsoCorrectoR with a graphical user interface__, type __BioCLite("IsoCorrectoRGUI")__ into your R console to install the package __IsoCorrectoRGUI__. Then type __library(IsoCorrectoRGUI)__ to load the package. If you install IsoCorrectoRGUI, the base version of IsoCorrecoR with the console interface will be installed, too, so you can use it as well.
-
-###Base version of IsoCorrectoR with console interface (IsoCorrectoR)
-
-If you do not need a graphical user interface and only want to __install the base version of IsoCorrectoR (console interface only)__, start an R session, e.g. by starting RStudio. Then type __BioCLite("IsoCorrectoR")__ into the R console to install the package __IsoCorrectoR__. Then type __library(IsoCorrectoR)__ to load the package.
-
-#How to use IsoCorrectoR
-
-##Using IsoCorrectoR via the graphical user interface (IsoCorrectoRGUI package)
+## Using IsoCorrectoR via the graphical user interface (IsoCorrectoRGUI package)
 
 To use IsoCorrectoR with the graphical user interface (GUI), the __IsoCorrectoRGUI package has to be installed__ (see section [Installing IsoCorrectoR]). __Start an R-session (e.g. by starting RStudio)__ and __load the IsoCorrectoRGUI package with library(IsoCorrectoRGUI)__. Then you can __start the GUI by typing IsoCorrectionGUI()__ in the R console. The IsoCorrectoR GUI will pop up. Sometimes it starts in the background, in that case you have to click on its icon in the taskbar to bring it to front.
 
 In the GUI you can now select the input files and adjust the parameters for your correction task (see section [Input files and parameters] for detailed information). By clicking the __Start Correction__-button, the correction is started. If everything is alright, a __Correction successful!__-window will pop up, usually after less than 1 minute. If something is wrong (e.g. with the input files), a window with the corresponding error message will show up. After correction has finished, you will find your corrected data and a log-file of the correction in the output directory you specified.
 
-####Parameters that can be set in the graphical user interface:
+#### Parameters that can be set in the graphical user interface:
 
 * __Measurement File__: The file that contains the measured data to be corrected. Has to be provided
 * __Molecule File__: The file that contains the information on the molecules for which data is to be corrected. Has to be provided
@@ -101,9 +93,9 @@ In the GUI you can now select the input files and adjust the parameters for your
 * __High Resolution Mode__: If checked, performs high resolution correction on the data. Should only be checked if you know that you have high resolution data
 * __Advanced Options__: see section [Input files and parameters]
 
-##Using IsoCorrectoR via the R console (IsoCorrectoR and IsoCorrectoRGUI package)
+## Using IsoCorrectoR via the R console (IsoCorrectoR and IsoCorrectoRGUI package)
 
-The function that performs the correction - __IsoCorrection()__ - can be __called directly from the R console__ or via an R-script. To use IsoCorrectoR directly via the R console, the __IsoCorrectoR package has to be installed__ .If you have installed IsoCorrectoRGUI, IsoCorrectoR has been installed automatically in the process (see section [Installing IsoCorrectoR]). __To use IsoCorrection(), start an R-session (e.g. by starting RStudio)__ and __load the IsoCorrectoR base package with library(IsoCorrectoR)__. Then __call the function IsoCorrection() with the desired parameter settings__. Once the correction is finished, the function will write files with the corrected data (csv or xls) and a log file to the desired output directory. 
+The function that performs the correction - __IsoCorrection()__ - can be __called directly from the R console__ or via an R-script. To use IsoCorrectoR directly via the R console, the __IsoCorrectoR package has to be installed__.If you have installed IsoCorrectoRGUI, IsoCorrectoR has been installed automatically in the process (see section [Installing IsoCorrectoR]). __To use IsoCorrection(), start an R-session (e.g. by starting RStudio)__ and __load the IsoCorrectoR base package with library(IsoCorrectoR)__. Then __call the function IsoCorrection() with the desired parameter settings__. Once the correction is finished, the function will write files with the corrected data (csv or xls) and a log file to the desired output directory. 
 
 The function requires at least the following parameters:
 
@@ -111,7 +103,7 @@ The function requires at least the following parameters:
 * Path to an element information file 
 * Path to a molecule information file
 
-####Function call:
+#### Function call:
 ```{r, echo=TRUE, eval=FALSE}
 IsoCorrection(MeasurementFile=NA, ElementFile=NA, MoleculeFile=NA, 
               CorrectTracerImpurity=FALSE, CorrectTracerElementCore=TRUE, 
@@ -123,7 +115,7 @@ IsoCorrection(MeasurementFile=NA, ElementFile=NA, MoleculeFile=NA,
 ```
 
 
-####Basic arguments:
+#### Basic arguments:
 
 * __MeasurementFile__: The file that contains the measured data to be corrected. Has to be set
 *	__ElementFile__: The file that contains the element information required for correction. Has to be set
@@ -138,14 +130,14 @@ IsoCorrection(MeasurementFile=NA, ElementFile=NA, MoleculeFile=NA,
 *	__ReturnResultsObject__: If TRUE, returns the correction results as a list in the current R-session in addition to writing the results to file. This is useful if the corrected data has to be processed directly in R
 * __verbose__: If TRUE, status messages are sent to standard output.
 
-####Advanced arguments (usually need not be changed):
+#### Advanced arguments (usually need not be changed):
 
 *	__CorrectAlsoMonoisotopic__:  If TRUE, will also provide monoisotopic correction results
 *	__CalculationThreshold__: Defines a threshold to stop probability calculations at for making correction faster (normal resolution mode). Should be left at default value
 *	__CalculationThreshold_UHR__: Defines a threshold to stop probability calculations at for making correction faster (high resolution mode). Should be left at default value
 *	__Testmode__: If TRUE, starts a testmode for development purposes. Not required for users of IsoCorrectoR
 
-####Returned value
+#### Returned value
 
 The IsoCorrection() function returns a list with 4 elements: success, results, log and error. 
 
@@ -158,7 +150,7 @@ The list element __results__ only contains the data from correction if ReturnRes
 
 See section [Input files and parameters] for further information on input files, input file structure and the function parameters.
 
-##Result files produced by IsoCorrectoR
+## Result files produced by IsoCorrectoR
 
 IsoCorrectoR writes the correction results either to multiple csv files or to multiple worksheets of a single xls file, depending on user choice. The  result csv-files/xls-worksheets generated are:
 
@@ -176,19 +168,19 @@ If the __CorrectAlsoMonoisotopic__ parameter is set to TRUE (default FALSE), the
 *	__CorrectedMonoisotopic__: The corrected data considering only the monoisotopic species (see [Correction results for monoisotopic species] in the advanced correction parameters for more information)
 *	__CorrectedMonoisotopicFractions__: The corrected data considering only the monoisotopic species, as fractions
 
-##Starting IsoCorrectoR GUI directly under Windows (IsoCorrectoRGUI package)
+## Starting IsoCorrectoR GUI directly under Windows (IsoCorrectoRGUI package)
 
 In approach for using the GUI described before, an R-session had to be started manually before the GUI could be started. __It is also possible to start the GUI directly without manually starting an R-session beforehand__. For Windows users, we provide a setup to do this. The IsoCorrectoRGUI package directory (you can view the default directories for installing packages in R by typing .libPaths() in the R console) contains a folder called __GUI_direct_start__ in extdata. In this folder you will find a file called __IsoCorrectoR.bat__. Open the file with a text editor, e.g. Editor, Notepad or Notepad++. In this file, you have to exchange the __'insert_your_path_to_R.exe_here'__ in the line __SET path_to_R='insert_your_path_to_R.exe_here'__ by the __path to your R-executable (R.exe)__ in quotation marks, something like 'C:/Program Files/R/R-3.3.3/bin/R.exe'. Then save the changes you made to the file. You can now create a shortcut of the IsoCorrectoR.bat file and put that shortcut anywhere you like. __Don't change the position of the original file or of the GUI_direct_start.R file__. By double-clicking the shortcut, the IsoCorrectoR GUI can now be started directly.
 
 A similar approach using a bash-script instead of a batch-script can be used to start the GUI directly on Linux and Mac OS operating systems.
 
-#Input files and parameters
+# Input files and parameters
 
-##Input files
+## Input files
 
 Input files must be either in 'csv' or 'xls'/'xlsx' format. You can find examples for input files in the folder __extdata__ in the directory where you installed the IsoCorrectoR package (you can view the default paths for installing packages in R by typing .libPaths() in the R console). The __exdata__ folder contains input files and results for both normal and high resolution data.
 
-###Molecule information file
+### Molecule information file
 
 The molecule information file contains all relevant information on the molecules that are to be corrected for natural isotope abundance/tracer purity. The file must contain three columns with the names __Molecule__, __MS ion or MS/MS product ion__ and __MS/MS neutral loss__. The names/IDs of the molecules to be corrected are given in the first column of the file. 
 
@@ -198,11 +190,11 @@ For __MS^1^ measurements__, the __second column__ of the molecule file, __MS ion
 
 __Be aware that also elements that occur only once in the molecule(-fragment) must be assigned a number, e.g. N1__ in the example above. Elements that do not occur at all need not be mentioned. If an element is present in the molecule information file but not in the element information file, this will produce an error and the correction is aborted.
 
-For high resolution correction, multiple tracers can be considered in a single molecule. Thus, e.g. C9N1LabC2LabN1 can be written for a glycine molecule that can contain both ^13^C and ^15^N tracers. It is important to note that due to the nature of high resolution correction, elements other than the tracer elements are not relevant to the correction and need not be provided. Providing multiple tracers in normal resolution mode will result in an error, as well as providing a neutral loss sum formula in high resolution mode (MS/MS mode is not supported for high resolution correction). 
+In high resolution correction, multiple tracers can be considered in a single molecule. Thus, e.g. C9N1LabC2LabN1 can be written for a glycine molecule that can contains both ^13^C and ^15^N tracers. It is important to note that due to the nature of high resolution correction, elements other than the tracer elements are not relevant to the correction and need not be provided. Providing multiple tracers in normal resolution mode will result in an error, as well as providing a neutral loss sum formula in high resolution mode (MS/MS mode is not supported for high resolution correction). 
 
 See the tables below for normal and high resolution example setups of the file.
 
-####Example for molecule information file structure
+#### Example for molecule information file structure
 
 ```{r moleculeFileExampleNormalRes, echo=FALSE, eval=TRUE}
 
@@ -226,11 +218,11 @@ knitr::kable(
 )
 ```
 
-###Measurement file
+### Measurement file
 
 This file contains the measured data that needs to be corrected. The row names in the first column of the file define the kind of measurement made (e.g. what kind of transition was measured in an MS/MS experiment), the column names in the first row define the samples. The __entry in row 1/column 1 of the file must be Measurements/Samples__. The measured values must be placed so that they match the measurement and sample they belong to. 
 
-The __names of the measurements in the first column__ need to be __consistent with the following nomenclature__, where __'Name' is the name of the respective molecule specified in the molecules information file: Name_x.y for MS/MS measurements and Name_x for non-MS/MS measurements__. Here, __x is the mass shift of the precursor__ of a given measurement with respect to the precursor of the completely unlabeled molecule. __y is the mass shift of the product ion__. 
+The __names of the measurements in the first column__ need to be __consistent with the following nomenclature__, where __'Name' is the name of the respective molecule specified in the molecule information file: Name_x.y for MS/MS measurements and Name_x for non-MS/MS measurements__. Here, __x is the mass shift of the precursor__ of a given measurement with respect to the precursor of the completely unlabeled molecule. __y is the mass shift of the product ion__. 
 
 An alanine molecule that is named 'Ala' in the molecule information file and that shows a mass shift of 2 in the precursor and 1 in the product ion would be named Ala_2.1. A non-MS/MS-measurement of that alanine species with a mass shift of 2 would be named Ala_2. See the table below for an example file setup (MS/MS case for molecule Ala and MS^1^ case for molecule Ser).
 
@@ -238,7 +230,7 @@ If __high resolution measurements__ are to be corrected, the measurement names m
 
 See the tables below for example setups of a measurement file: In the normal resolution case, the molecule Ala was measured in MS/MS mode and can contain up to 2 tracers in the product ion and up to 1 tracer in the neutral loss. Ser was measured in MS^1^ mode and can contain up to 3 tracers. In the high resolution example, Gly and Asn were measured in a combined ^13^C and ^15^N tracing experiment and can contain both ^13^C and ^15^N tracer.
 
-####Example for measurement file structure
+#### Example for measurement file structure
 
 ```{r measurementFileExampleNormRes, echo=FALSE, eval=TRUE}
 fileExample <- IsoCorrectoR[["normal_resolution"]][["measurement_file"]]
@@ -274,7 +266,7 @@ knitr::kable(
 )
 ```
 
-####Handling of missing values in the measurement file
+#### Handling of missing values in the measurement file
 
 Assume e.g. a serine molecule that can be labeled with ^13^C at 3 positions. What can often be the case is that a signal cannot be measured or integrated properly, e.g. because it is below LOD or because there are peak overlaps. For performing appropriate correction, correction tools require measured data for all possible ^13^C isotopologues of serine: The species with 0, 1, 2 and 3 ^13^C. 
 
@@ -284,7 +276,7 @@ This way however, the correction algorithm may assume something that is not corr
 
 IsoCorrectoR circumvents this problem by not expecting you to enter an area value for a species if you do not know it. You can simply leave the associated field in your measurement data file blank. IsoCorrectoR will recognize this and simply limit its correction to the species for which a value was given. It will then issue warnings in the log file for each sample and molecule with missing values, so that you can keep track of what happens. Clearly, performing correction with only a subset of species is usually not as accurate as when using all species, but it avoids the error introduced by assuming that missing values are always 0.
 
-###Element information file
+### Element information file
 
 The element information file contains __all relevant information on the elements important for the correction process__. These are elements that occur in the molecules to be corrected and the stable isotopes of which show a high enough natural abundance to make a recognizable contribution to measurements of higher mass. The file has four columns which must be named __Element__, __Isotope abundance_Mass shift__, __Tracer isotope mass shift__, and __Tracer purity__. In the __first column__, the file must contain the __element names (e.g. C, N, O...)__. The __second column__ contains the __natural isotope abundance (probability of occurrence) and the mass shift of the isotopes__ for each element. The mass shift is provided in relation to the isotope with the highest natural abundance. Thus, when considering e.g. C, the mass shift of ^12^C, which is the most abundant isotope of C, would be 0 and the mass shift of ^13^C would be 1.For each isotope, abundance and mass shift are separated by an underscore (_) while the different isotopes of an element are separated by a forward slash (/). For example 0.0107_1/0.9893_0 for the C isotopes ^13^C and ^12^C, respectively. The order of isotopes is not important. 
 
@@ -294,7 +286,7 @@ In the __third column__, the __mass
 shift associated with the tracer isotope__ is given (e.g. 1 for ^13^C or 2 for ^18^O) in the row corresponding to the tracer element. If correction for tracer purity is desired, the __purity of the tracer__ has to be
 given as a fraction value in __column four__. See the table below for an example setup of the file.
 
-####Example for element information file structure
+#### Example for element information file structure
 
 ```{r elementFileExample, echo=FALSE, eval=TRUE}
 fileExample <- IsoCorrectoR$element_file
@@ -306,43 +298,43 @@ knitr::kable(
 )
 ```
 
-##Basic correction parameters
+## Basic correction parameters
 
-###Tracer purity correction
+### Tracer purity correction
 
-Tracer purity is the probability that a tracer element atom in the tracer substrate that should be labeled actually is labeled. E.g. a 99.0% isotopic purity 1,2-^13^C-Glucose has a 99.0% chance for each of its carbon atom positions 1 and 2 of containing a ^13^C. Thus, there is a 1.0% chance for each of those carbons that they are not ^13^C. Consequently, molecules that contain portions of the tracer substrate due to metabolic activity inherit its impurity and contribute to measurements of lower mass according to the impurity of the tracer. This is due to the decrease in mass shift associated with tracer impurity (e.g. ^12^C instead of ^13^C at a carbon position). Tracer purity correction should only be performed if the purity information at a hand is reliable. If __CorrectTracerImpurity__ is set to TRUE, correction for tracer impurity is performed in addition to natural abundance correction, if it is set to FALSE, no correction for tracer impurity is performed, only correction for natural isotope abundance.
+Tracer purity is the probability that a tracer element atom in the tracer substrate that should be labeled actually is labeled. E.g. a 99.0% isotopic purity 1,2-^13^C2-Glucose has a 99.0% chance for each of its carbon atom positions 1 and 2 of containing a ^13^C. Thus, there is a 1.0% chance for each of those carbons that they are not ^13^C. Consequently, molecules that contain portions of the tracer substrate due to metabolic activity inherit its impurity and contribute to measurements of lower mass according to the impurity of the tracer. This is due to the decrease in mass shift associated with tracer impurity (e.g. ^12^C instead of ^13^C at a carbon position). Tracer purity correction should only be performed if the purity information at a hand is reliable. If __CorrectTracerImpurity__ is set to TRUE, correction for tracer impurity is performed in addition to natural abundance correction, if it is set to FALSE, no correction for tracer impurity is performed, only correction for natural isotope abundance.
 
-###Correction of tracer element natural abundance in the core molecule
+### Correction of tracer element natural abundance in the core molecule
 
 If __CorrectTracerElementCore__ is TRUE, the natural isotope abundance of the core tracer element atoms is taken into account for the correction procedure. The core of a molecule(-fragment) to be corrected is defined as the portion which can incorporate atoms from the tracer substrate (through metabolism). 
 
 The maximum number of tracer element atoms expected in the core is given by the user in the Lab[Element-Name] entry in the molecule information file (e.g. LabC or LabN). Usually, Lab[Element-Name] is just set to the amount of tracer element atoms present in the molecule(-fragment) without derivatization (e.g. LabC5 if C is the tracer element and glutamate is the molecule in question, measured in MS^1^). If possible, __CorrectTracerElementCore__ should be active, as the core usually makes a substantial contribution to the natural abundance correction. Switching the functionality off leads to only partially corrected values. This may also be desired, for example if only the natural abundance contribution of derivatization is to be corrected.
 
-Another reason for setting __CorrectTracerElementCore__ to FALSE may be that the isotopic abundances of the tracer element in the tracer substrate are unknown. This can occur with partially labeled tracer substrates like 1,2-^13^C2-Glucose. Part of the molecule is unlabeled. Due to the production process it is however not guaranteed that the unlabeled positions follow natural isotope bundance. This should usually be the case. If there are doubts, however, the manufacturer should be consulted. Abnormality can be checked by measuring the tracer substrates isotopologue distribution and correcting it with __CorrectTracerElementCore__ turned on and __CorrectTracerImpurity__ turned off. In this case, high correction residuals indicate non-natural isotope abundance, as well as area values at m/z higher than that of substrate itself which are substantially higher than 0. The core tracer element correction always works with fully labeled tracer substrates like U-^13^C-Glucose or U-^13^C-Glutamine.
+Another reason for setting __CorrectTracerElementCore__ to FALSE may be that the isotopic abundances of the tracer element in the tracer substrate are unknown. This can occur with partially labeled tracer substrates like 1,2-^13^C2-Glucose. Part of the molecule is unlabeled. Due to the production process it is however not guaranteed that the unlabeled positions follow natural isotope abundance. This should usually be the case. If there are doubts, however, the manufacturer should be consulted. Abnormality can be checked by measuring the tracer substrates isotopologue distribution and correcting it with __CorrectTracerElementCore__ turned on and __CorrectTracerImpurity__ turned off. In this case, high correction residuals indicate non-natural isotope abundance, as well as area values at m/z higher than that of the substrate itself which are substantially higher than 0. The core tracer element correction always works with fully labeled tracer substrates like U-^13^C-Glucose or U-^13^C-Glutamine.
 
-###Normal/High resolution correction
+### Normal/High resolution correction
 
-The parameter __UltraHighRes__ decides whether normal or high resolution correction is performed. FALSE stands for normal resolution, TRUE for high resolution. Be aware that using the high resolution mode on normal data will either abort directly (if measurements are named according to the normal resolution scheme in the measurement file) or provide wrong results as correction is only performed on the tracer element and no other elements. The same is true for performing normal resolution correction on high resolution data. Here, natural abundance contributions are considered that are not present in high resolution data due to the resolution. 
+The parameter __UltraHighRes__ decides whether normal or high resolution correction is performed. FALSE stands for normal resolution, TRUE for high resolution. High resolution correction should only be used for high resolution data, meaning that the incorporation of isotopes that give the same nominal mass shift (e.g. the incorporation of ^13^C compared to the incorporation of ^15^N) can be resolved due to mass defect related differences. If this is the case, also data from experiments where multiple tracers were used simultaneously (e.g. ^13^C and ^15^N) can be corrected using the high resolution mode. 
 
-Plus, normal resolution correction cannot be employed for multiple tracers. Thus, high resolution correction should only be used for high resolution data, meaning that the incorporation of isotopes that give basically the same mass shift (e.g. the incorporation of ^13^C compared to the incorporation of ^15^N) can be resolved due to mass defect related differences. If this is the case, also data from experiments where multiple tracers were used simultaneously can be corrected using the high resolution mode. 
+Be aware that using the high resolution mode on normal resolution data will either abort directly (if measurements are named according to the normal resolution scheme in the measurement file) or provide wrong results as correction is only performed on the tracer element and no other elements. The same is true for performing normal resolution correction on high resolution data. Here, natural abundance contributions are considered that are not present in high resolution data because they can be resolved spectrometrically. Plus, normal resolution correction cannot be used for data of experiments where multiple tracers (e.g. ^13^C and ^15^N) have been employed simultaneously.
 
-##Advanced correction parameters
+## Advanced correction parameters
 
 These parameters usually need not be changed.
 
-###Correction results for monoisotopic species
+### Correction results for monoisotopic species
 
-It might at first appear intuitive that the correction for natural isotope abundance and tracer impurity would correspond to a substraction of those contributions from the measured values. But such values would only reflect the quantity of the corrected monoisotopic species, the m/z of which corresponds to the respective m/z windows chosen for the measurements (the monoisotopic species is the respective labeled species where all isotopes (expect for the tracers) are present in their most abundant from). 
+It might at first appear intuitive that the correction for natural isotope abundance and tracer impurity would correspond to a substraction of those contributions from the measured values. But such values would only reflect the quantity of the corrected monoisotopic species, the m/z of which corresponds to the respective m/z windows chosen for the measurements (the monoisotopic species is the respective labeled species where all isotopes (except for the tracers) are present in their most abundant from). 
 
 However, the quantity of the monoisotopic species is not a very good measure when trying to compare the different isotopologues of a molecule quantitatively. This is because the ratio between the monoisotopic portion and the total amount of a given labeled species varies with the amount of label incorporated from the tracing experiment. Thus, IsoCorrectoR by default provides the corrected total amount values of the labeled species. 
 
 Here, the contributions from other species are removed, while the quantities of the different natural abundance and tracer impurity derived isotopologues of the species to be corrected are added (correcting for natural abundance and tracer impurity means removing contributions from other species, not the natural abundance/tracer purity derived portions of the species to be corrected itself). If corrected monoisotopic values are explicitly wished for, however, this can be achieved by running IsoCorrectoR with the option __CorrectAlsoMonoisotopic__ = TRUE. Then, corrected monoisotopic values are provided in addition to the corrected total amount values. By default, __CorrectAlsoMonoisotopic__ is set to FALSE.
 
-###Calculation thresholds
+### Calculation thresholds
 
-In normal resolution mode, __CalculationThreshold__ can be set to omit calculation of contribution probabilities that are lower than the threshold. This saves computational resources. The threshold is set to 10^-8 by default and should only be changed with good consideration. __CalculationThreshold__ must be a value between 10^-2 and 0, the lower the value, the more accurate the correction. If set to 0, the threshold is turned off completely. 
+In normal resolution mode, __CalculationThreshold__ can be set to omit the calculation of natural abundance/tracer purity contribution probabilities that are lower than the threshold. This saves computational resources. The threshold is set to 10^-8 by default and should only be changed with good consideration. __CalculationThreshold__ must be a value between 10^-2 and 0, the lower the value, the more accurate the correction. If set to 0, the threshold is turned off completely. 
 
-In high resolution mode __CalculationThreshold_UHR__ can be set which also limits the calculation contribution probabilities. This is done by omitting the calculation of probabilities associated with the total natural abundance incorporation or tracer impurity caused loss of [__CalculationThreshold_UHR__] tracer isotopes. At __CalculationThreshold_UHR__ = 8 (default), those probabilities can be considered negligible and the threshold should only be changed with good consideration. __CalculationThreshold_UHR__ must be a non-negative integer value, the higher the value, to more accurate the correction. If set to 0, the threshold is turned off completely.
+In high resolution mode __CalculationThreshold_UHR__ can be set to limit the calculation of contribution probabilities. This is done by omitting the calculation of probabilities associated with the total natural abundance incorporation or tracer impurity caused loss of [__CalculationThreshold_UHR__] tracer isotopes. At __CalculationThreshold_UHR__ = 8 (default), those probabilities can be considered negligible and the threshold should only be changed with good consideration. __CalculationThreshold_UHR__ must be a non-negative integer value, the higher the value, to more accurate the correction. If set to 0, the threshold is turned off completely.
 
 # SessionInfo {.unnumbered}
 

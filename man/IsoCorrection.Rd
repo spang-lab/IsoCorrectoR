@@ -92,7 +92,7 @@ It performs the correction of mass spectrometry data from stable isotope
 labeling experiments with regard to natural abundance and tracer purity.
 Data from both MS and MS/MS experiments can be corrected
 (with any tracer isotope: 13C, 15N, 18O...), as well as high resolution data
-from multiple tracer experiments (e.g. 13C and 15N used simultaneously).
+from multiple-tracer experiments (e.g. 13C and 15N used simultaneously).
 }
 \examples{
 
