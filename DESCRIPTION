@@ -24,6 +24,8 @@ LazyData: TRUE
 NeedsCompilation: no
 biocViews: Software, Metabolomics, MassSpectrometry, Preprocessing
 RoxygenNote: 6.1.1
-Suggests: knitr,
-    rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr

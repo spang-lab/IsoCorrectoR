@@ -1,0 +1,25 @@
+ISOCORRECTOR LOG-FILE - 2018-11-20 13:24:32
+IsoCorrectoR-version: 1.1.2
+
+IsoCorrectoR is free software and comes without any warranty.
+
+FILES AND DIRECTORIES
+
+Measurement File: inst/testdata/high_resolution/triple_tracer/MeasurementFile.csv
+Molecule File: inst/testdata/high_resolution/triple_tracer/MoleculeFile.csv
+Element File: inst/testdata/ElementFile.csv
+Working Directory: C:/IsoCorrectoR/Development/IsoCorrectoR_R_dev_heinrich/IsoCorrectoR
+Output Directory: inst/testdata/high_resolution/triple_tracer/reference
+Result File(s): IsoCorrectoR_nco_np_Corrected.csv, IsoCorrectoR_nco_np_CorrectedFractions.csv, IsoCorrectoR_nco_np_Residuals.csv, IsoCorrectoR_nco_np_RelativeResiduals.csv, IsoCorrectoR_nco_np_CorrectedMonoisotopic.csv, IsoCorrectoR_nco_np_CorrectedMonoisotopicFractions.csv, IsoCorrectoR_nco_np_MeanEnrichment.csv, IsoCorrectoR_nco_np_RawData.csv
+
+PARAMETERS
+
+Correction for tracer impurity: FALSE
+Correction of tracer element in core molecule: FALSE
+Ultra-High-Resolution correction mode: TRUE
+Calculation of mean enrichment: TRUE
+Molecules in the correction process: Asn, Arg, Short, Gly
+Tracer(s): C, N, H, O
+Tracer purity: NA, NA, NA, NA
+Limit value for calculation: 8
+
