@@ -1,29 +1,19 @@
-context("End to end testing of IsoCorrectoR")
+context("End to end testing of IsoCorrectoR with csv files")
 
-fullTest <- TRUE
-
-TestDataPath <- system.file('testdata', package='IsoCorrectoR')
 ElementFile = file.path(TestDataPath, 'ElementFile.csv')
 
 endToEndTest <- function(PathToProjects, Project, ElementFilePath,
-                         ResolutionOption=FALSE, ExpectedOutcome='TRUE') {
+                         ResolutionOption=FALSE, ExpectedOutcome='TRUE', resultTypes=NA) {
   
   ProjectPath <- file.path(PathToProjects, Project)
   
-  CalculateMeanEnrichment = TRUE
-  CorrectAlsoMonoisotopic = TRUE
-  CalculationThreshold = 10^(-8)
-  CalculationThreshold_UHR = 8
-  FileOutFormat='csv'
+  MeasurementFile = file.path(ProjectPath, 'MeasurementFile.csv')
+  MoleculeFile = file.path(ProjectPath, 'MoleculeFile.csv')
   
   ImpurityOptions <- c(TRUE, FALSE)
   CoreOptions <- c(TRUE, FALSE)
   names(ImpurityOptions) <- c('p', 'np')
   names(CoreOptions) <- c('co', 'nco')
-  
-  resultTypes <- c('c', 'cf', 'me', 're', 'cm', 'cmf', 'rd')
-  names(resultTypes) <- c('Corrected', 'CorrectedFractions', 'MeanEnrichment', 'Residuals',
-                          'CorrectedMonoisotopic', 'CorrectedMonoisotopicFractions', 'RawData')
   
   DirOut = file.path(ProjectPath, 'test_output')
   
@@ -37,27 +27,20 @@ endToEndTest <- function(PathToProjects, Project, ElementFilePath,
     
     for (CoreOption in names(CoreOptions)) {
       
-      MeasurementFile = file.path(ProjectPath, 'MeasurementFile.csv')
-      MoleculeFile = file.path(ProjectPath, 'MoleculeFile.csv')
-      
       FileOut = paste0(CoreOption, '_', ImpurityOption)
       
       #run IsoCorrection with given parameters
       
-      correctionResults <- IsoCorrection(MeasurementFile=MeasurementFile, ElementFile=ElementFilePath, MoleculeFile=MoleculeFile,
-                                         CorrectTracerImpurity=ImpurityOptions[ImpurityOption], CorrectTracerElementCore=CoreOptions[CoreOption], 
-                                         CalculateMeanEnrichment=CalculateMeanEnrichment,
+      correctionResults <- IsoCorrectionSafeCall(MeasurementFile=MeasurementFile,
+                                         ElementFile=ElementFilePath,
+                                         MoleculeFile=MoleculeFile,
+                                         CorrectTracerImpurity=ImpurityOptions[ImpurityOption],
+                                         CorrectTracerElementCore=CoreOptions[CoreOption], 
                                          UltraHighRes=ResolutionOption,
                                          DirOut=DirOut, 
                                          FileOut=FileOut,
-                                         FileOutFormat=FileOutFormat,
-                                         CorrectAlsoMonoisotopic=CorrectAlsoMonoisotopic,
-                                         CalculationThreshold=CalculationThreshold,
-                                         CalculationThreshold_UHR=CalculationThreshold_UHR,
-                                         ReturnResultsObject=TRUE,
+                                         CorrectAlsoMonoisotopic=TRUE,
                                          Testmode=TRUE)
-      
-      #Load reference results
       
       success <- correctionResults$success
       results <- correctionResults$results
@@ -66,10 +49,15 @@ endToEndTest <- function(PathToProjects, Project, ElementFilePath,
       
       expect_equal(success, ExpectedOutcome, info = testinfo)
       
+      #Load reference results and test results from file and compare
+      
       for(resultType in names(resultTypes)) {
         
-        reference <- read.csv(file.path(ProjectPath, 'reference', paste0(FileOut, '_', resultTypes[resultType], '.csv')), row.names = 1)
-        testresults <- read.csv(file.path(ProjectPath, 'test_output', paste0('IsoCorrectoR_', FileOut, '_', resultType, '.csv')), row.names = 1)
+        reference <- loadResults(filepath=file.path(ProjectPath, 'reference', paste0(FileOut, '_', resultTypes[resultType], '.csv')),
+                                 filetype='csv', dataDescription='reference')
+        
+        testresults <- loadResults(filepath=file.path(ProjectPath, 'test_output', paste0('IsoCorrectoR_', FileOut, '_', resultType, '.csv')),
+                                   filetype='csv', dataDescription='testresults')
         
         testinfoSpecific <- paste0(testinfo, ', result type: ', resultType)
         
@@ -87,12 +75,6 @@ endToEndTest <- function(PathToProjects, Project, ElementFilePath,
 
 test_that("End to end tests for normal resolution", {
   
-  if(!fullTest) {
-  
-    skip('Skipped because no full test')
-    
-  }
-  
   generalPath <- file.path(TestDataPath, 'end_to_end_nres')
 
   ProjectFolders <- list.files(generalPath)
@@ -100,19 +82,13 @@ test_that("End to end tests for normal resolution", {
   for (Project in ProjectFolders) {
     
     endToEndTest(PathToProjects=generalPath, Project=Project, ElementFilePath=ElementFile,
-                 ResolutionOption=FALSE)
+                 ResolutionOption=FALSE, resultTypes = resultTypes)
     
   }
      
 })
 
 test_that("End to end tests for high resolution", {
-  
-  if(!fullTest) {
-    
-    skip('Skipped because no full test')
-    
-  }
   
   generalPath <- file.path(TestDataPath, 'end_to_end_hres')
   
@@ -121,7 +97,7 @@ test_that("End to end tests for high resolution", {
   for (Project in ProjectFolders) {
     
     endToEndTest(PathToProjects=generalPath, Project=Project, ElementFilePath=ElementFile,
-                             ResolutionOption=TRUE)
+                             ResolutionOption=TRUE, resultTypes = resultTypes)
       
   }
   
@@ -136,7 +112,24 @@ test_that("End to end tests for normal resolution with missing values", {
   for (Project in ProjectFolders) {
     
     suppressWarnings(endToEndTest(PathToProjects=generalPath, Project=Project, ElementFilePath=ElementFile,
-                 ResolutionOption=FALSE, ExpectedOutcome = "WARNINGS"))
+                 ResolutionOption=FALSE, ExpectedOutcome = "WARNINGS", resultTypes = resultTypes))
+    
+  }
+  
+})
+
+test_that("End to end tests for normal resolution, additional testsets", {
+    
+  skip('Skipped')
+  
+  generalPath <- file.path(TestDataPath, 'additional_testsets_nres')
+  
+  ProjectFolders <- list.files(generalPath)
+  
+  for (Project in ProjectFolders) {
+    
+    endToEndTest(PathToProjects=generalPath, Project=Project, ElementFilePath=ElementFile,
+                 ResolutionOption=FALSE, resultTypes = resultTypes)
     
   }
   
