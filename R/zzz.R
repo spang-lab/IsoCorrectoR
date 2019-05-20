@@ -9,7 +9,7 @@
     disclaimer <- paste0(pkgname, " is licensed under ", pkgLicense, ". It is free software and comes without any warranty.\n\n")
     
     citation <- paste0("If you use ", pkgname, " in published research, please cite:\n\n", "Paul Heinrich, Christian Kohler et al.\n", "Correction for natural isotope abundance and tracer impurity in MS-, MS/MS- and high-resolution multiple-tracer-data from stable isotope labeling experiments with IsoCorrectoR", 
-        " (Manuscript accepted)\n\n")
+        " (Scientific reports, 2018)\n\n")
     
     packageStartupMessage(paste0(msg, disclaimer, citation))
 }

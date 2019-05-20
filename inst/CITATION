@@ -9,18 +9,16 @@ citEntry(entry = "Article",
                    as.person("Rainer Spang"),
                    as.person("Peter J. Oefner"),
                    as.person("Katja Dettmer")),
-  journal      = "XX",
-  year         = "XXXX",
-  volume       = "XX",
-  number       = "XX",
-  pages        = "X--XX",
+  journal      = "Scientific reports",
+  year         = "2018",
+  volume       = "8",
+  number       = "1",
   url          = "https://genomics.ur.de/files/IsoCorrectoR/",
 
   textVersion  =
-  paste("Paul Heinrich et al. (2018).",
+  paste("Heinrich et al. (Scientific reports, 2018).",
         "Correcting for natural isotope abundance and tracer impurity in MS-, MS/MS- and high-resolution-multiple-tracer-data from stable isotope labeling experiments with IsoCorrectoR",
-        "(Manuscript accepted)",
         "URL https://genomics.ur.de/files/IsoCorrectoR/")
 )
 
-citFooter("Thanks for using IsoCorrectoR. Have a nice day !")
+citFooter("Thanks for using IsoCorrectoR. Have a nice day!")
