@@ -298,7 +298,7 @@ checkMoleculeDataStructure <- function(data, logEnvironment, verbose) {
   
   # Use regular expressions to check column data
   
-  moleculeRegex <- "^((|Lab)[A-Z][a-z]?[1-9][0-9]?)+$"
+  moleculeRegex <- "^((|Lab)[A-Z][a-z]?[1-9][0-9]*)+$"
   
   invalidSyntax <- " doesn't match the required syntax."
   

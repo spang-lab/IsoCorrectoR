@@ -11,7 +11,7 @@ ParseMoleculeInformation <- function(MoleculeInformation, ElementInfo, UltraHigh
   Characters <- "([A-Za-z]*)"
   Numbers <- "([0-9]+[0-9]|[0-9])"
   TracerElement <- "(Lab)"
-  MoleculeFormulaRegex <- "(|Lab)[A-Z][a-z]?[1-9][0-9]?"
+  MoleculeFormulaRegex <- "(|Lab)[A-Z][a-z]?[1-9][0-9]*"
     
   if (is.na(MoleculeInformation[1,3])) {
     NumberFragments <- 1
@@ -29,7 +29,7 @@ ParseMoleculeInformation <- function(MoleculeInformation, ElementInfo, UltraHigh
   # of a given molecule
   for (Fragment in seq_len(NumberFragments)) {
     
-    # For each molecule(-fragment), the string containinig the element count 
+    # For each molecule(-fragment), the string containing the element count 
     # information is split into the individual elements using a regex
     
     Elements <- stringr::str_extract_all(MoleculeInformation[1,Fragment + 1], MoleculeFormulaRegex)[[1]]
