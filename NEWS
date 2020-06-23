@@ -1,9 +1,3 @@
-CHANGES IN VERSION 1.4.1 (release 3.10) / 1.5.1 (devel)
-======================================================
-
-  o Modified molecule regex such that now more than 99 atoms per element can be used in the molecular formulas. Thanks to user "Farheen" by bringing up this issue on the Bioconductor support site (https://support.bioconductor.org/p/127001)
-
-
 CHANGES IN VERSION 1.0.3 (release 3.8) / 1.1.3 (devel)
 ======================================================
 
