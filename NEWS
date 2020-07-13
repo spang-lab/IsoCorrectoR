@@ -1,3 +1,7 @@
+CHANGES IN VERSION 1.6.2 (release 3.11) / 1.7.2 (devel)
+======================================================
+    o as response to a post from Am Zimmerman on the bioconductor support site (https://support.bioconductor.org/p/132345/), log-space factorials were used to calculate internal correction probabilities.
+
 CHANGES IN VERSION 1.0.3 (release 3.8) / 1.1.3 (devel)
 ======================================================
 

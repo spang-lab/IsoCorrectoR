@@ -2,19 +2,28 @@
 
 IsoCombinationsProbMassShift <- function(Element, NumberIso, ElementInfo, CombinationsArray, IsoCombPre, AvailablePlacesTotal) {
   
-  VariableTerm <- 1
+  ProbFactorialTermLog <- lfactorial(AvailablePlacesTotal)
+  ProbExpTerm <- 1
   MassShiftIsoComb <- 0
+  ElementTable <- data.frame(ElementInfo[[Element]][[1]])
   
   for (IsotopeNo in seq_len(NumberIso)) {
     
-    # abundance
-    VariableTerm <- VariableTerm * (data.frame(ElementInfo[[Element]][[1]])[IsotopeNo, 1])^as.numeric(CombinationsArray[IsoCombPre, IsotopeNo])/(factorial(as.numeric(CombinationsArray[IsoCombPre, IsotopeNo])))
+    IsotopeCount <- as.numeric(CombinationsArray[IsoCombPre, IsotopeNo])
+    IsotopeAbundance <- ElementTable[IsotopeNo, 1]
+    IsotopeMassShift <- ElementTable[IsotopeNo, 2]
+    
+    # Probability factorial term (log factorial as factorial can lead to numbers that are too big)
+    ProbFactorialTermLog <- ProbFactorialTermLog - lfactorial(IsotopeCount)
+    
+    # Probability exponential term
+    ProbExpTerm <- ProbExpTerm * (IsotopeAbundance^IsotopeCount)
     
     # mass shift
-    MassShiftIsoComb <- MassShiftIsoComb + data.frame(ElementInfo[[Element]][[1]])[IsotopeNo, 2] * as.numeric(CombinationsArray[IsoCombPre, IsotopeNo])
+    MassShiftIsoComb <- MassShiftIsoComb + IsotopeMassShift * IsotopeCount
   }  #IsotopeNo
   
-  ProbIsoComb <- VariableTerm * (factorial(AvailablePlacesTotal))
+  ProbIsoComb <- exp(ProbFactorialTermLog) * ProbExpTerm
   
   return(list(ProbIsoComb = ProbIsoComb, MassShiftIsoComb = MassShiftIsoComb))
   
